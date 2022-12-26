@@ -93,7 +93,8 @@ const getMovesPawn = (color, x, y) => {
   let moves = [];
   if (color === "l") {
     if (x - 1 >= 0) {
-      moves.push({ xi: x - 1, yi: y });
+      if (hasPiece(getTile(x - 1, y)) === null)
+        moves.push({ xi: x - 1, yi: y });
       if (y - 1 >= 0)
         if (hasPiece(getTile(x - 1, y - 1)))
           moves.push({ xi: x - 1, yi: y - 1 });
@@ -105,7 +106,8 @@ const getMovesPawn = (color, x, y) => {
     }
   } else {
     if (x + 1 < 8) {
-      moves.push({ xi: x + 1, yi: y });
+      if (hasPiece(getTile(x + 1, y)) === null)
+        moves.push({ xi: x + 1, yi: y });
       if (y - 1 >= 0)
         if (hasPiece(getTile(x + 1, y - 1)))
           moves.push({ xi: x + 1, yi: y - 1 });
